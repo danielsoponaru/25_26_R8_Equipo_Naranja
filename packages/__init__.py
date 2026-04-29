@@ -1,2 +1,1 @@
-from .EDA import *
-from .Preprocesamiento import *
+from .sample_ips import *
