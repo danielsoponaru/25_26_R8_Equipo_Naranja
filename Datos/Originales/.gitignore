@@ -1,14 +1,7 @@
-# Ignorar todo el contenido dentro de la carpeta datos
-datos/*
-# Excepción: No ignorar el archivo .gitkeep para que se suba la carpeta vacía
-!datos/.gitkeep
+# Ignorar absolutamente todo lo que esté dentro de cualquier carpeta llamada Datos o datos
+[Dd]atos/
 
-# Entornos virtuales de Python
-venv/
-env/
-.env
-
-.ipynb_checkpoints/
-
-__pycache__/
-*.pyc
+# Ignorar archivos pesados por extensión (por si acaso)
+*.csv
+*.txt
+*.BIN
