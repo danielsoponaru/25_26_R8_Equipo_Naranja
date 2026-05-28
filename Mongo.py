@@ -1,7 +1,7 @@
 """
 Nombre del script: mongodb_firewall.py
 Dataset de entrada: Firewall_logs.csv
-Ruta del dataset en el repositorio: ./datos_origen/Firewall_logs.csv
+Ruta del dataset en el repositorio: ./Datos\Originales\Firewall_logs.csv
 
 Descripción:
 Cargar los logs del firewall en MongoDB y ejecutar las consultas analíticas
