@@ -16,7 +16,7 @@ from pymongo.errors import BulkWriteError, ConnectionFailure
 #CONFIGURACIÓN Y RUTAS RELATIVAS
 #Definimos la ruta relativa tomando como base la carpeta donde está este script
 DIRECTORIO_ACTUAL = os.path.dirname(os.path.abspath(__file__))
-RUTA_CSV = os.path.join(DIRECTORIO_ACTUAL, "datos_origen", "Firewall_logs.csv")
+RUTA_CSV = r"C:\25_26_R8_Equipo_Naranja\Datos\Originales\Firewall_logs.csv"
 MONGO_URI = "mongodb://localhost:27017/"
 DB_NAME = "reto8"
 COL_NAME = "firewall_logs"
