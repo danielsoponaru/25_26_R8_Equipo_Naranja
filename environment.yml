@@ -1,0 +1,38 @@
+name: reto8_naranja
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  # --- Datos ---
+  - pandas
+  - numpy
+  - polars
+  # --- Visualización ---
+  - matplotlib
+  - seaborn
+  - plotly
+  - dash
+  # --- Machine Learning ---
+  - scikit-learn
+  - scipy
+  - joblib
+  - hdbscan          # requiere compilador C++ en Windows; conda-forge lo gestiona automáticamente
+  # --- Base de datos ---
+  - pymongo
+  # --- IoT ---
+  - paho-mqtt
+  # --- PyTorch (CPU) ---
+  # Si dispones de GPU NVIDIA, sustituye las dos líneas siguientes por:
+  #   - pytorch
+  #   - pytorch-cuda=11.8   (ajusta la versión a tu driver)
+  #   y añade el canal -c nvidia
+  - pytorch
+  - torchvision
+  - cpuonly
+  # --- Solo disponibles en pip ---
+  - pip:
+    - pygad            # algoritmos genéticos
+    - ydata-profiling  # perfilado automático de datasets
+    - IP2Location      # geolocalización de IPs

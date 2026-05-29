@@ -75,12 +75,26 @@ Estos archivos son **generados automáticamente** al ejecutar los notebooks. No 
 ```
 00 → 01 → 02
           ↓
-     03 → 04 → 05 → 06
+     03 → 04 → 05 → 06  ⚠️
           ↓
           07
 ```
 
 Los notebooks `02` y `07` (EDA y optimización de compresores) son independientes del bloque de seguridad de red y pueden ejecutarse en paralelo a partir del paso `01`.
+
+---
+
+## ⚠️ Advertencia — `06-Deteccion_Anomalias.ipynb`
+
+**No ejecutar este notebook** a menos que se cumplan las dos condiciones siguientes:
+
+1. **Datos completos disponibles**: requiere el fichero `network_flows.csv` original (~1,6 GB, 3,5 millones de filas) en `Datos/Originales/`. Sin él el notebook falla en las primeras celdas.
+
+2. **Entorno correctamente configurado**: utiliza dos librerías con instalación específica:
+   - **`hdbscan`** — requiere compilador C++ en Windows (Visual C++ Build Tools). Si no está instalado correctamente lanza errores de compilación al importar.
+   - **`PyTorch`** — requiere elegir entre la versión CPU o GPU según el hardware disponible. Ver instrucciones detalladas en `indicaciones_entorno_virtual_conda.txt`.
+
+El tiempo de ejecución completo del notebook puede **superar 1 hora** en CPU estándar. Los resultados ya generados están disponibles en `Datos/Transformados/anomalias_clasificadas.csv`.
 
 ---
 

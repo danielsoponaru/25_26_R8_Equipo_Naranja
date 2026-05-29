@@ -1,12 +1,83 @@
-conda create --name proyectos_python python=3.9
-conda activate proyectos_python
-conda list
+========================================================
+  INSTRUCCIONES DE ENTORNO — Reto 8 Equipo NARANJA
+========================================================
 
-pip install pandas
-pip install seaborn
+REQUISITO PREVIO
+----------------
+Tener instalado Anaconda o Miniconda.
+Descarga: https://www.anaconda.com/download
 
-conda env export > entorno_EQUIPO_RETO6.yml
+--------------------------------------------------------
+OPCIÓN A — Crear el entorno desde el fichero YML (RECOMENDADO)
+--------------------------------------------------------
 
-conda create --name RETO_N --file entorno_EQUIPO_RETO6.yml
+1. Abre Anaconda Prompt (o terminal con conda activado).
 
+2. Navega a la carpeta del proyecto:
+      cd ruta\a\25_26_R8_Equipo_Naranja
 
+3. Crea el entorno a partir del fichero environment.yml:
+      conda env create -f environment.yml
+
+4. Activa el entorno:
+      conda activate reto8_naranja
+
+5. Abre Jupyter:
+      jupyter notebook
+
+¡Listo! Todos los paquetes necesarios quedan instalados.
+
+--------------------------------------------------------
+OPCIÓN B — Instalación manual paso a paso
+--------------------------------------------------------
+
+1. Crea el entorno con Python 3.10:
+      conda create --name reto8_naranja python=3.10
+      conda activate reto8_naranja
+
+2. Instala paquetes desde conda-forge:
+      conda install -c conda-forge pandas numpy polars matplotlib seaborn plotly dash scikit-learn scipy joblib pymongo paho-mqtt hdbscan
+
+3. Instala PyTorch (elige UNA de las dos opciones):
+
+   >> CPU (cualquier ordenador):
+      conda install pytorch torchvision cpuonly -c pytorch
+
+   >> GPU NVIDIA (más rápido, requiere driver CUDA instalado):
+      conda install pytorch torchvision pytorch-cuda=11.8 -c pytorch -c nvidia
+      (ajusta 11.8 a la versión de tu driver — compruébala con: nvidia-smi)
+
+4. Instala el resto de paquetes vía pip:
+      pip install pygad ydata-profiling IP2Location
+
+5. Abre Jupyter:
+      jupyter notebook
+
+--------------------------------------------------------
+NOTAS IMPORTANTES
+--------------------------------------------------------
+
+> HDBSCAN en Windows: en caso de error de compilación instala primero
+  las Visual C++ Build Tools desde:
+  https://visualstudio.microsoft.com/visual-cpp-build-tools/
+  Selecciona "Desarrollo de escritorio con C++" y vuelve a ejecutar el paso 2.
+
+> PyTorch: si tienes GPU y quieres aprovecharla, usa la Opción GPU del paso 3.
+  La versión CPU funciona igualmente pero es más lenta en el notebook 06.
+
+> El notebook 06-Deteccion_Anomalias.ipynb tiene un tiempo de ejecución
+  muy elevado (puede superar 1 hora) y NO debe ejecutarse si no se dispone
+  de los datos originales completos. Ver aviso en el README.
+
+--------------------------------------------------------
+EXPORTAR EL ENTORNO (si añades nuevos paquetes)
+--------------------------------------------------------
+
+  conda env export > environment.yml
+
+--------------------------------------------------------
+ELIMINAR EL ENTORNO
+--------------------------------------------------------
+
+  conda deactivate
+  conda env remove --name reto8_naranja
