@@ -4,4 +4,3 @@
 # Ignorar archivos pesados por extensión (por si acaso)
 *.csv
 *.txt
-*.BIN
