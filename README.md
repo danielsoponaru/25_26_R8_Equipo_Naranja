@@ -18,7 +18,8 @@
 ├── 07-Optimizacion_Compresores.ipynb   # Algoritmo genético para optimización energética de compresores
 │
 ├── Datos/
-│   ├── Originales/                     # ⚠️ VACÍO — añadir aquí los datos originales (ver sección Datos)
+│   ├── Originales/                     # Datos de partida (ver sección Datos)
+│   │   └── IP2LOCATION-LITE-DB11.BIN  # Base de datos de geolocalización IP (incluida en el repo)
 │   └── Transformados/                  # Archivos generados automáticamente por los notebooks
 │       └── resultados_consultas.csv
 │
@@ -44,18 +45,27 @@
 
 ### Datos originales (`Datos/Originales/`)
 
-Esta carpeta está **vacía en el repositorio**. Antes de ejecutar los notebooks es necesario añadir manualmente los siguientes archivos:
+La mayoría de los datos originales **no están en el repositorio** por tamaño y confidencialidad. Antes de ejecutar los notebooks es necesario añadir manualmente los siguientes archivos:
 
-| Archivo | Descripción | Usado en |
-|---|---|---|
-| `firewall_logs.csv` | Logs de firewall (65.532 registros) | `03`, `04` |
-| `network_flows.csv` | Flujos de red CICFlowMeter (3,5 M filas, ~1,6 GB) | `00`, `01`, `05`, `06` |
-| `CompA.csv` | Series temporales compresor A | `02`, `07` |
-| `CompB.csv` | Series temporales compresor B | `02`, `07` |
-| `CompC.csv` | Series temporales compresor C | `02`, `07` |
-| `CompD.csv` | Series temporales compresor D | `02`, `07` |
+| Archivo | Descripción | Usado en | En el repo |
+|---|---|---|---|
+| `IP2LOCATION-LITE-DB11.BIN` | Base de datos binaria de geolocalización IP (IP2Location LITE) | `05`, `06` | ✅ Sí |
+| `firewall_logs.csv` | Logs de firewall (65.532 registros) | `03`, `04` | ❌ No |
+| `network_flows.csv` | Flujos de red CICFlowMeter (3,5 M filas, ~1,6 GB) | `00`, `01`, `05`, `06` | ❌ No |
+| `CompA.csv` | Series temporales compresor A | `02`, `07` | ❌ No |
+| `CompB.csv` | Series temporales compresor B | `02`, `07` | ❌ No |
+| `CompC.csv` | Series temporales compresor C | `02`, `07` | ❌ No |
+| `CompD.csv` | Series temporales compresor D | `02`, `07` | ❌ No |
 
-> Los datos originales no se incluyen en el repositorio por razones de tamaño y confidencialidad.
+> **Por qué `IP2LOCATION-LITE-DB11.BIN` sí está en el repositorio:**
+> Este archivo se distribuye gratuitamente bajo la licencia IP2Location LITE y es de acceso público
+> ([ip2location.com](https://www.ip2location.com)). A diferencia de los CSVs del proyecto —que
+> contienen datos industriales confidenciales o superan el umbral de tamaño de Git—, la base de
+> datos LITE DB11 (~50 MB) es redistribuible y necesaria para reproducir el enriquecimiento de IPs
+> con coordenadas geográficas (país, ciudad, latitud/longitud) que habilita la visualización
+> geoespacial en Kibana y las features de contextualización del pipeline de detección de anomalías
+> (`05-Network_Flows_Limpieza.ipynb`, `06-Deteccion_Anomalias.ipynb`). Incluirla garantiza que
+> cualquier miembro del equipo pueda reproducir el entorno completo sin pasos de descarga adicionales.
 
 ### Datos transformados (`Datos/Transformados/`)
 
